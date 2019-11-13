@@ -1,3 +1,5 @@
 node_modules/
 .vscode/
 /server/node_modules/
+/server/models/queries/cryptosecret.js
+/server/models/queries/jwtsecret.js
