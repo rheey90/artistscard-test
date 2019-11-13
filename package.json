@@ -1,0 +1,35 @@
+{
+  "name": "artistscard-test",
+  "version": "1.0.0",
+  "description": "A web application written in Javascript for uploading music files, searching uploaded music files, and edit music file data",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rheey90/artistscard-test.git"
+  },
+  "keywords": [
+    "Javscript",
+    "Node.js",
+    "React"
+  ],
+  "author": "Damagedcase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rheey90/artistscard-test/issues"
+  },
+  "homepage": "https://github.com/rheey90/artistscard-test#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "1.19.1"
+  },
+  "dependencies": {
+    "eslint-plugin-prettier": "^3.1.1"
+  }
+}
