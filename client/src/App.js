@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WrappedLogin from "./pages/Login";
-import WrappedSignUp from "./pages/SignUp";
+// import WrappedSignUp from "./pages/SignUp";
+import "antd/dist/antd.css";
 
 class App extends React.Component {
   state = { currentUser: "" };
@@ -23,7 +24,7 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/signup" component={WrappedSignUp} />
+          {/* <Route path="/signup" component={WrappedSignUp} />
           <Route
             path="/page"
             component={() => (
@@ -32,7 +33,7 @@ class App extends React.Component {
                 setLogout={this.setCurrentUser}
               />
             )}
-          />
+          /> */}
         </Switch>
       </Router>
     );
