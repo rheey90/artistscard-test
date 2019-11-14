@@ -4,3 +4,4 @@ node_modules/
 /server/models/queries/cryptosecret.js
 /server/s3/config-artistscard-test.json
 /client/node_modules/
+/client/.env
