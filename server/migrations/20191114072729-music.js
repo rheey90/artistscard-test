@@ -1,9 +1,8 @@
-const Sequelize = require("sequelize");
+"use strict";
 
-module.exports = (sequelize, type) => {
-  return sequelize.define(
-    "music",
-    {
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable("music", {
       id: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
@@ -27,18 +26,23 @@ module.exports = (sequelize, type) => {
         allowNull: false
       },
       username: {
-        type: Sequelize.STRING(35)
-      }
-    },
-    {
-      classMethods: {
-        associate: function(models) {
-          Music.belongsTo(models.Users, {
-            foreignKey: "username",
-            onDelete: "CASCADE"
-          });
+        type: Sequelize.STRING(35),
+        onDelete: "CASCADE",
+        references: {
+          model: "users",
+          key: "username"
         }
+      },
+      createdAt: {
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        type: Sequelize.DATE
       }
-    }
-  );
+    });
+  },
+
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable("music");
+  }
 };

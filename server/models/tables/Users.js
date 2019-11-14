@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 module.exports = (sequelize, type) => {
   return sequelize.define(
-    "music",
+    "users",
     {
       id: {
         type: Sequelize.INTEGER(11),
@@ -10,30 +10,20 @@ module.exports = (sequelize, type) => {
         autoIncrement: true,
         primaryKey: true
       },
-      artist: {
-        type: Sequelize.STRING(50),
-        allowNull: false
-      },
-      title: {
-        type: Sequelize.STRING(50),
-        allowNull: false
-      },
-      album: {
-        type: Sequelize.STRING(50),
-        allowNull: false
-      },
-      filelocation: {
-        type: Sequelize.STRING(200),
-        allowNull: false
-      },
       username: {
-        type: Sequelize.STRING(35)
+        type: Sequelize.STRING(35),
+        allowNull: false,
+        unique: true
+      },
+      password: {
+        type: Sequelize.STRING(100),
+        allowNull: false
       }
     },
     {
       classMethods: {
         associate: function(models) {
-          Music.belongsTo(models.Users, {
+          Users.hasMany(models.Music, {
             foreignKey: "username",
             onDelete: "CASCADE"
           });

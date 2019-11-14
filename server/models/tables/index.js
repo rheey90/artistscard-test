@@ -15,7 +15,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-const User = require("./User")(sequelize, Sequelize);
+const Users = require("./Users")(sequelize, Sequelize);
 const Music = require("./Music")(sequelize, Sequelize);
 
 fs.readdirSync(__dirname)
@@ -36,4 +36,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = { db, User, Music, sequelize };
+module.exports = { db, Users, Music, sequelize };

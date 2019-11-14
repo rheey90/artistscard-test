@@ -1,16 +1,8 @@
 const user = require("../models/queries/user");
+const music = require("../models/queries/music");
 
 module.exports = {
   user: {
-    checkid: async (req, res) => {
-      try {
-        const data = await user.checkid(req, res);
-        res.status(200);
-        res.send(data);
-      } catch (err) {
-        console.error(err);
-      }
-    },
     signup: async (req, res) => {
       try {
         const data = await user.signup(req, res);
@@ -45,6 +37,26 @@ module.exports = {
         res.send(data);
       } catch (err) {
         console.error(err);
+      }
+    }
+  },
+  music: {
+    insertdata: async (req, res) => {
+      try {
+        const data = await music.insertdata(req, res);
+        res.status(201);
+        res.send(data);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    editdata: async (req, res) => {
+      try {
+        const data = await music.editdata(req, res);
+        res.status(200);
+        res.send(data);
+      } catch (err) {
+        console.log(err);
       }
     }
   }
