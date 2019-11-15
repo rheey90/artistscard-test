@@ -50,6 +50,15 @@ module.exports = {
         console.error(err);
       }
     },
+    getdata: async (req, res) => {
+      try {
+        const data = await music.getdata(req, res);
+        res.status(200);
+        res.send(data);
+      } catch (err) {
+        console.error(err);
+      }
+    },
     editdata: async (req, res) => {
       try {
         const data = await music.editdata(req, res);

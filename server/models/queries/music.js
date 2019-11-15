@@ -21,6 +21,17 @@ module.exports = {
       return { isDataCreated: true };
     });
   },
+  getdata: (req, res) => {
+    return Music.findAll({
+      where: { username: req.params.username }
+    }).then(data => {
+      if (data) {
+        return data;
+      } else {
+        return { data: false };
+      }
+    });
+  },
   editdata: (req, res) => {
     const body = req.body;
 

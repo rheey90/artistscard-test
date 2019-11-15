@@ -16,6 +16,8 @@ router.post("/music/:username/uploadtos3", uploadmp3.single("mp3"), (req, res) =
 
 router.post("/music/:username", controller.music.insertdata);
 
+router.get("/music/:username", controller.music.getdata);
+
 router.put("/music/:username/:dataid", controller.music.editdata);
 
 module.exports = router;
