@@ -49,7 +49,7 @@ class Login extends React.Component {
         }}
       >
         <Form onSubmit={this.handleClick} className="login-form">
-          <h3>음원 데이터 편집</h3>
+          <h3>음원 데이터 편집기</h3>
           <Form.Item>
             {getFieldDecorator("id", {
               rules: [{ required: true, message: "아이디를 입력하세요" }]
@@ -91,7 +91,7 @@ class Login extends React.Component {
               className="login-form-button"
               style={{ marginLeft: "50px" }}
             >
-              회원가입
+              <Link to="/signup">회원가입</Link>
             </Button>
           </Form.Item>
         </Form>
