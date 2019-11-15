@@ -3,7 +3,7 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button } from "antd";
-const API_HOST_URL = process.env.REACT_APP_BACKEND_HOST;
+const API_HOST_URL = "http://localhost:3001";
 
 class Login extends React.Component {
   handleClick = e => {
@@ -13,23 +13,27 @@ class Login extends React.Component {
       if (!err) {
         let username = values.id;
         let password = values.password;
-      }
-      fetch(`${API_HOST_URL}/sign/signin`, {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(res => res.json())
-        .then(res => {
-          if (res.isLogIn) {
-            this.props.setCurrentUser(value.id);
-          } else {
-            alert("아이디와 비밀번호를 확인하세요");
+        let body = {
+          username: username,
+          password: password
+        };
+        fetch(`${API_HOST_URL}/sign/signin`, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json"
           }
         })
-        .catch(err => console.error(err));
+          .then(res => res.json())
+          .then(res => {
+            if (res.isLogIn) {
+              this.props.setCurrentUser(values.id);
+            } else {
+              alert("아이디와 비밀번호를 확인하세요");
+            }
+          })
+          .catch(err => console.error(err));
+      }
     });
   };
   render() {
@@ -58,7 +62,7 @@ class Login extends React.Component {
                 prefix={
                   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                 }
-                placeholder="ID"
+                placeholder="아이디"
                 style={{ width: "200px" }}
               />
             )}
@@ -72,7 +76,7 @@ class Login extends React.Component {
                   <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
                 }
                 type="password"
-                placeholder="Password"
+                placeholder="비밀번호"
                 style={{ width: "200px" }}
               />
             )}

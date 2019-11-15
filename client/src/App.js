@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WrappedLogin from "./pages/Login";
-// import WrappedSignUp from "./pages/SignUp";
+import WrappedSignUp from "./pages/Signup";
 import "antd/dist/antd.css";
 
 class App extends React.Component {
@@ -24,8 +24,8 @@ class App extends React.Component {
               />
             )}
           />
-          {/* <Route path="/signup" component={WrappedSignUp} />
-          <Route
+          <Route path="/signup" component={WrappedSignUp} />
+          {/* <Route
             path="/page"
             component={() => (
               <Page
