@@ -2,12 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WrappedLogin from "./pages/Login";
 import WrappedSignUp from "./pages/Signup";
+import Page from "./pages/Page";
 import "antd/dist/antd.css";
 
 class App extends React.Component {
   state = { currentUser: "" };
-  setCurrentUser = username => {
-    this.setState({ currentUser: username });
+  setCurrentUser = userid => {
+    this.setState({ currentUser: userid });
   };
 
   render() {
@@ -25,7 +26,7 @@ class App extends React.Component {
             )}
           />
           <Route path="/signup" component={WrappedSignUp} />
-          {/* <Route
+          <Route
             path="/page"
             component={() => (
               <Page
@@ -33,7 +34,7 @@ class App extends React.Component {
                 setLogout={this.setCurrentUser}
               />
             )}
-          /> */}
+          />
         </Switch>
       </Router>
     );
