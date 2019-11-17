@@ -11,9 +11,11 @@ class Signup extends React.Component {
     form.validateFields((err, values) => {
       if (!err) {
         let userInfo = {
-          username: values.id,
+          userid: values.id,
+          username: values.name,
           password: values.password
         };
+        console.log(userInfo);
         fetch(`${API_HOST_URL}/sign/signup`, {
           method: "POST",
           body: JSON.stringify(userInfo),
@@ -66,6 +68,18 @@ class Signup extends React.Component {
       >
         <Form onSubmit={this.handleClickConfirm}>
           <h3>회원등록</h3>
+          <Form.Item label="이름">
+            {getFieldDecorator("name", {
+              rules: [
+                {
+                  required: true,
+                  message: "회원님의 이름을 입력하세요"
+                }
+              ]
+            })(
+              <Input id="name" style={{ width: "200px" }} placeholder="이름" />
+            )}
+          </Form.Item>
           <Form.Item label="아이디">
             {getFieldDecorator("id", {
               rules: [
@@ -74,7 +88,9 @@ class Signup extends React.Component {
                   message: "사용할 아이디를 입력하세요"
                 }
               ]
-            })(<Input style={{ width: "200px" }} placeholder="아이디" />)}
+            })(
+              <Input id="id" style={{ width: "200px" }} placeholder="아이디" />
+            )}
           </Form.Item>
           <Form.Item label="비밀번호" hasFeedback>
             {getFieldDecorator("password", {

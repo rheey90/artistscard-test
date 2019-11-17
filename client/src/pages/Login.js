@@ -11,10 +11,10 @@ class Login extends React.Component {
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        let username = values.id;
+        let userid = values.id;
         let password = values.password;
         let body = {
-          username: username,
+          userid: userid,
           password: password
         };
         fetch(`${API_HOST_URL}/sign/signin`, {
