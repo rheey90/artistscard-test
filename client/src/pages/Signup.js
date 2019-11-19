@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button, Input, Form } from "antd";
-const API_HOST_URL = "http://localhost:3001";
+const API_HOST_URL = process.env.REACT_APP_HOST_URL;
 
 class Signup extends React.Component {
   handleClickConfirm = e => {
@@ -15,7 +15,6 @@ class Signup extends React.Component {
           username: values.name,
           password: values.password
         };
-        console.log(userInfo);
         fetch(`${API_HOST_URL}/sign/signup`, {
           method: "POST",
           body: JSON.stringify(userInfo),

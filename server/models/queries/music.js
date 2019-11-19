@@ -6,7 +6,7 @@ const Music = require("../tables/index").Music;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
-app.use(cors({ credentials: true, origin: "http://localhost:3001" }));
+app.use(cors());
 
 module.exports = {
   insertdata: (req, res) => {
@@ -16,14 +16,14 @@ module.exports = {
       title: body.title,
       album: body.album,
       filelocation: body.filelocation,
-      username: req.params.username
+      userid: req.params.userid
     }).then(function() {
       return { isDataCreated: true };
     });
   },
   getdata: (req, res) => {
     return Music.findAll({
-      where: { username: req.params.username }
+      where: { userid: req.params.userid }
     }).then(data => {
       if (data) {
         return data;
@@ -41,10 +41,10 @@ module.exports = {
         title: body.title,
         album: body.album,
         filelocation: body.filelocation,
-        username: req.params.usernme
+        userid: req.params.usernme
       },
-      { where: { id: req.params.dataid } }
+      { where: { id: req.params.musicid } }
     );
-    return Music.findOne({ where: { id: req.params.dataid } });
+    return Music.findOne({ where: { id: req.params.musicid } });
   }
 };

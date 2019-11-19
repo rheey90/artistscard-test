@@ -8,7 +8,7 @@ const Users = require("../tables/index").Users;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
-app.use(cors({ credentials: true, origin: "http://localhost:3001" }));
+app.use(cors());
 
 app.set("crypto-secret", cryptosecret);
 
@@ -16,6 +16,7 @@ module.exports = {
   signup: (req, res) => {
     const body = req.body;
     return Users.create({
+      userid: body.userid,
       username: body.username,
       password: crypto
         .createHmac("sha512", app.get("crypto-secret"))
@@ -26,7 +27,7 @@ module.exports = {
   signin: (req, res) => {
     return Users.findOne({
       where: {
-        username: req.body.username,
+        userid: req.body.userid,
         password: crypto
           .createHmac("sha512", app.get("crypto-secret"))
           .update(req.body.password)
@@ -47,14 +48,14 @@ module.exports = {
     const body = req.body;
     Users.update(
       {
-        username: req.params.username,
+        userid: req.params.userid,
         password: crypto
           .createHmac("sha512", app.get("crypto-secret"))
           .update(body.password)
           .digest("base64")
       },
-      { where: { username: req.params.username } }
+      { where: { userid: req.params.userid } }
     );
-    return Users.findOne({ where: { username: req.params.username } });
+    return Users.findOne({ where: { userid: req.params.userid } });
   }
 };

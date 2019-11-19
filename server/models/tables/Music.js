@@ -26,7 +26,7 @@ module.exports = (sequelize, type) => {
         type: Sequelize.STRING(200),
         allowNull: false
       },
-      username: {
+      userid: {
         type: Sequelize.STRING(35)
       }
     },
@@ -34,7 +34,7 @@ module.exports = (sequelize, type) => {
       classMethods: {
         associate: function(models) {
           Music.belongsTo(models.Users, {
-            foreignKey: "username",
+            foreignKey: "userid",
             onDelete: "CASCADE"
           });
         }

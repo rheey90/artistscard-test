@@ -64,7 +64,7 @@ class NavBar extends React.Component {
         styles={{
           sidebar: {
             zIndex: this.props.sidebarOpen ? "5" : "-1",
-            width: "60%"
+            width: "20%"
           }
         }}
       >

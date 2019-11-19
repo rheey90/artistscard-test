@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Modal, Input, Form, message } from "antd";
-const API_HOST_URL = "http://localhost:3001";
+const API_HOST_URL = process.env.REACT_APP_HOST_URL;
 
 class ChangePassword extends React.Component {
   handleOk = () => {
@@ -12,7 +12,6 @@ class ChangePassword extends React.Component {
           userid: this.props.currentUser,
           password: values.newPassword
         };
-        console.log(body);
         fetch(`${API_HOST_URL}/sign/${this.props.currentUser}/changepw`, {
           method: "PUT",
           body: JSON.stringify(body),

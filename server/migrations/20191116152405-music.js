@@ -25,12 +25,12 @@ module.exports = {
         type: Sequelize.STRING(200),
         allowNull: false
       },
-      username: {
+      userid: {
         type: Sequelize.STRING(35),
         onDelete: "CASCADE",
         references: {
           model: "users",
-          key: "username"
+          key: "userid"
         }
       },
       createdAt: {

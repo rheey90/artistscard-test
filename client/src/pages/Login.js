@@ -3,8 +3,10 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button } from "antd";
-const API_HOST_URL = "http://localhost:3001";
+import dotenv from "dotenv";
 
+dotenv.config();
+const API_HOST_URL = process.env.REACT_APP_HOST_URL;
 class Login extends React.Component {
   handleClick = e => {
     const form = this.props.form;

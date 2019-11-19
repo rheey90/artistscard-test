@@ -12,7 +12,7 @@ import WrappedInsert from "./Insert";
 import List from "./List";
 import Logout from "../components/Logout";
 import ChangePasswordButton from "../components/ChangePasswordButton";
-const API_HOST_URL = "http://localhost:3001";
+const API_HOST_URL = process.env.REACT_APP_HOST_URL;
 
 class Page extends React.Component {
   state = {
@@ -20,10 +20,10 @@ class Page extends React.Component {
     sidebarOpen: false,
     musics: [{ init: true }]
   };
-  fetchMusic = async () => {
-    const res = await fetch(`${API_HOST_URL}/music/${this.props.currentUser}`);
-    let data = await res.json();
-    return data;
+  fetchMusic = () => {
+    return fetch(`${API_HOST_URL}/music/${this.props.currentUser}`).then(res =>
+      res.json()
+    );
   };
   setSidebarOpen = () => {
     this.setState({ sidebarOpen: !this.state.sidebarOpen });

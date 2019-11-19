@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "antd";
-const API_HOST_URL = "http://localhost:3001";
+const API_HOST_URL = process.env.REACT_APP_HOST_URL;
 
 class Logout extends React.Component {
   state = { size: "small" };

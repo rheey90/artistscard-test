@@ -8,16 +8,16 @@ router.post("/sign/signin", controller.user.signin);
 
 router.get("/sign/signout", controller.user.signout);
 
-router.put("/sign/:username/changepw", controller.user.changepw);
+router.put("/sign/:userid/changepw", controller.user.changepw);
 
-router.post("/music/:username/uploadtos3", uploadmp3.single("mp3"), (req, res) => {
+router.post("/music/:userid/uploadtos3", uploadmp3.single("mp3"), (req, res) => {
   return res.json({ mp3Url: req.file.location });
 });
 
-router.post("/music/:username", controller.music.insertdata);
+router.post("/music/:userid", controller.music.insertdata);
 
-router.get("/music/:username", controller.music.getdata);
+router.get("/music/:userid", controller.music.getdata);
 
-router.put("/music/:username/:dataid", controller.music.editdata);
+router.put("/music/:userid/:musicid", controller.music.editdata);
 
 module.exports = router;
